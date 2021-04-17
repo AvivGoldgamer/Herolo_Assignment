@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'message_api',
+    'herokuapp',
 ]
 
 MIDDLEWARE = [
