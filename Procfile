@@ -1,0 +1,1 @@
+web: gunicorn Home_Assignment.wsgi
