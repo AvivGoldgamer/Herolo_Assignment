@@ -18,7 +18,6 @@ from django.urls import path
 from message_api.views import sendMessage, getMessages, getUnreadMessages, readMessage, deleteMessage, login, register
 
 urlpatterns = [
-    path('', admin.site.urls),
     path('admin/', admin.site.urls),
     path('sendmsg/', sendMessage),
     path("getmsg/", getMessages),
