@@ -177,25 +177,28 @@ def login(request):
     data = json.loads(request.body)
 
     # Defining response
-    user_auth = authenticate(username = data["username"], password = data["password"])
+    try:
+        user_auth = authenticate(username = data["username"], password = data["password"])
 
-    # Checking if user exists
-    if user_auth is not None:
+        # Checking if user exists
+        if user_auth is not None:
 
-        # Creating a token
-        token = secrets.token_hex(16)
-        
-        # Saving the token with the username to the DB
-        saveLoginToken(data["username"], token)
+            # Creating a token
+            token = secrets.token_hex(16)
+            
+            # Saving the token with the username to the DB
+            saveLoginToken(data["username"], token)
 
-        # Defining response with the token
-        response = HttpResponse(token)
+            # Defining response with the token
+            response = HttpResponse(token)
 
-    else:
+        else:
 
-        # Defining response for error
-        response = HttpResponse("username or password are incorrect")
+            # Defining response for error
+            response = HttpResponse("username or password are incorrect")
 
+    except e:
+        response = HttpResponse(e)
     # Returning response
     return response
 
