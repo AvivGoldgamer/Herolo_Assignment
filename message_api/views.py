@@ -25,8 +25,7 @@ def sendMessage(request):
             sender = data["sender"], 
             receiver = data["receiver"], 
             subject = data["subject"], 
-            message = data["message"], 
-            creation_date = data["creation date"]
+            message = data["message"]
         ).save()
     
 
@@ -163,7 +162,7 @@ def register(request):
         User.objects.create_user(data["username"], data["email"], data["password"])
 
     except:
-        response = HttpResponse("Something went wrong while trying to register")
+        response = HttpResponse("User already exists")
 
     # Returning Response
     return response
